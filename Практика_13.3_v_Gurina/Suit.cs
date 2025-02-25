@@ -8,38 +8,26 @@ namespace Практика_13._3_v_Gurina
 {
     public class Suit
     {
-        private string title;
-        private string material;
-        private string price;
-        public Suit(string title, string material, string price)
+        public string Brand { get; set; }
+        public string Color { get; set; }
+        public string Size { get; set; }
+        public string Price { get; set; }
+        public DateTime DataPostupleniy { get; set; }
+        public Suit(string brand, string color, string size, string price, DateTime dataPostupleniy)
         {
-            this.title = title;
-            this.material = material;
-            this.price = price;
+            Brand = brand;
+            Color = color;
+            Size = size;
+            Price = price;
+            DataPostupleniy = dataPostupleniy;
         }
-        public string getTitle()
+        public int CompareTo(Suit other)
         {
-            return this.title;
+            return this.Brand.CompareTo(other.Brand);
         }
-        public string getMaterial()
+        public override string ToString()
         {
-            return this.material;
-        }
-        public string getPrice()
-        {
-            return this.price;
-        }
-        public void setTitle(string title)
-        {
-            this.title = title;
-        }
-        public void setMaterial(string material)
-        {
-            this.material = material;
-        }
-        public void setPrice(string price)
-        {
-            this.price = price;
+            return $"{Brand} | {Color} | {Size} | {Price} | {DataPostupleniy.ToShortDateString()}";
         }
     }
 }

@@ -12,16 +12,20 @@ namespace Практика_13._3_v_Gurina
 {
     public partial class Form1 : Form
     {
+        private SuitCollection suitCollection;
+
 
         private DataGridViewColumn dataGridViewColumn1 = null;
         private DataGridViewColumn dataGridViewColumn2 = null;
         private DataGridViewColumn dataGridViewColumn3 = null;
 
-        private IList<Suit> costumes = new List<Suit>();
+        private List<Suit> costumes = new List<Suit>();
 
         public Form1()
         {
             InitializeComponent();
+            suitCollection = new SuitCollection();
+            UpdateSuitList();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -120,7 +124,14 @@ namespace Практика_13._3_v_Gurina
 
         private void button1_Click(object sender, EventArgs e)
         {
-            addCostum();
+            var suit = new Suit(txtBrand.Text, txtColor.Text, txtSize.Text, txtPrice.Text, datePostup.Value);
+            suitCollection.AddSuit(suit);
+            UpdateSuitList();
+        }
+
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            if (listBoxSuits.SelectedItem is Suit selectedSuit)
         }
     }
 }
